@@ -1,3 +1,3 @@
 # dsa-java-practice
-DSA Java Practice Repository
+DSA Java Practice Repository.
 Author-Tarun Kumar
