@@ -115,4 +115,92 @@ public class LeetCodePrograms {
 
 	}
 
+	/*
+	 * Given an integer x, return true if x is a palindrome, and false otherwise.
+	 * Input: x = 121 Output: true
+	 */
+
+	public boolean checkPalindrome(int input) {
+		boolean result = false;
+		int originalNumber = input;
+		int reversedNumber = 0;
+
+		while (input > 0) {
+			int digit = input % 10;
+			reversedNumber = reversedNumber * 10 + digit;
+			input = input / 10;
+
+		}
+		if (originalNumber == reversedNumber) {
+
+			result = true;
+		}
+
+		return result;
+	}
+
+	/*
+	 * Roman numerals are represented by seven different symbols: I, V, X, L, C, D
+	 * and M.
+	 * 
+	 * Symbol Value I 1 V 5 X 10 L 50 C 100 D 500 M 1000 Given a roman numeral,
+	 * convert it to an integer. Input: s = "LVIII" Output: 58
+	 */
+
+	public int convertRomanToInteger(String input) throws Exception {
+		if (!input.matches("[IVXLCDM]+")) {
+			throw new IllegalArgumentException("Invalid Roman numeral");
+		}
+		int result = 0;
+		HashMap<Character, Integer> hm = new HashMap<>();
+		hm.put('I', 1);
+		hm.put('V', 5);
+		hm.put('X', 10);
+		hm.put('L', 50);
+		hm.put('C', 100);
+		hm.put('D', 500);
+		hm.put('M', 1000);
+
+		for (int i = 0; i < input.length(); i++) {
+			Character c = input.charAt(i);
+			int value = hm.get(c);
+			if (i < input.length() - 1 && value < hm.get(input.charAt(i + 1))) {
+				result = result - value;
+
+			} else {
+				result = result + value;
+			}
+
+		}
+
+		return result;
+
+	}
+
+	/*
+	 * Write a function to find the longest common prefix string amongst an array of
+	 * strings.
+	 * 
+	 * If there is no common prefix, return an empty string "". Input: strs =
+	 * ["flower","flow","flight"] Output: "fl"
+	 */
+
+	public String longestCommonPrefix(String[] input) {
+		String prefix = input[0];
+
+		for (int i = 0; i < input.length; i++) {
+			while (!(input[i].indexOf(prefix) == 0)) {
+				prefix = prefix.substring(0, prefix.length() - 1);
+
+			}
+
+		}
+		if(prefix.isEmpty()) {
+			return "";
+		}
+
+		return prefix;
+
+	}
+
 }
