@@ -1,8 +1,11 @@
 package com.java.practice;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.*;
 
-public class LeetCodePrograms {
+public class CommonPrograms {
 	/*
 	 * Given an array of integers nums and an integer target, return indices of the
 	 * two numbers such that they add up to target. Input: nums = [2,7,11,15],
@@ -195,11 +198,64 @@ public class LeetCodePrograms {
 			}
 
 		}
-		if(prefix.isEmpty()) {
+		if (prefix.isEmpty()) {
 			return "";
 		}
 
 		return prefix;
+
+	}
+
+	/*
+	 * Check if all the Parentheses are properly closed in java code , get the code
+	 * from notepad
+	 */
+
+	public boolean checkValidParentheses(String path) throws IOException {
+
+		String data = Files.readString(Path.of(System.getProperty("user.dir") + path)).trim();
+		Stack<Character> sc = new Stack<>();
+		for (int i = 0; i < data.length(); i++) {
+			char c = data.charAt(i);
+			if (c == '(' || c == ')' || c == '{' || c == '}' || c == '[' || c == ']') {
+
+				if (c == '(' || c == '{' || c == '[') {
+					sc.push(c);
+				} else {
+
+					if (sc.isEmpty()) {
+						return false;
+					}
+					char top = sc.pop();
+					if (!(c == ')' && top == '(' || c == '}' && top == '{' || c == ']' && top == '[')) {
+						return false;
+					}
+
+				}
+
+			}
+
+		}
+		return sc.isEmpty();
+	}
+
+	/*
+	 * remove duplicate from sorted array without using any other array and
+	 * maintaining the order Input: nums = [0,0,1,1,1,2,2,3,3,4] Output: 5, nums =
+	 * [0,1,2,3,4,_,_,_,_,_]
+	 */
+
+	public void removeDuplicateSortedArray(int[] input) {
+		int k = 1;
+		for (int i = 1; i < input.length; i++) {
+			if (!(input[i] == input[i-1])) {
+				input[k] = input[i];
+				k += 1;
+			}
+
+		}
+		
+		System.out.println(k);
 
 	}
 
