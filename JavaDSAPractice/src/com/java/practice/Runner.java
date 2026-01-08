@@ -1,5 +1,7 @@
 package com.java.practice;
 
+import java.util.Arrays;
+
 public class Runner {
 
 	public static void main(String[] args) throws Exception {
@@ -10,7 +12,8 @@ public class Runner {
 		//String[] input7={"flower","flow","flight"};
 		//String path="\\src\\com\\java\\testdata\\javaCode.txt";
 		//CommonPrograms obj1= new CommonPrograms();
-		StringPrograms obj2= new StringPrograms();
+		//StringPrograms obj2= new StringPrograms();
+		ArrayPrograms obj3= new ArrayPrograms();
 		//int[] result1=obj1.twoSumProgramBruteForce(input, 9);
 		//int[] result2=obj1.twoSumProgramOptimized(input, 9);
 		//int result3= obj1.longestSubstringLength(input2);
@@ -31,8 +34,11 @@ public class Runner {
 		//obj2.firstNonRepeatingChar("aabbfhhjjj");
 		//obj2.StringExpansion("ac2b4c5");
 		//System.out.println(result8);
-		String[] input={"eat","tea","ate","team","mate","test"};
-		obj2.getCountOfAnagrams(input);
+		//String[] input={"eat","tea","ate","team","mate","test"};
+		//obj2.getCountOfAnagrams(input);
+		 int[] nums = {0,1,0,3,12};
+		int[] result=obj3.moveZeroes(nums);
+		System.out.println(Arrays.toString(result));
 
 	}
 
